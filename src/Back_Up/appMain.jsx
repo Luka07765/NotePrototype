@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import './App.css';
-import Main from './Logic/Main';
-import Sidebar from './SideBar/Sidebar';
+import Main from '../Logic/Main';
+import Sidebar from '../SideBar/Sidebar';
 
 function App() {
   const [notes, setNotes] = useState(
