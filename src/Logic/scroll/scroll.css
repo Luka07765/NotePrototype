@@ -1,0 +1,54 @@
+/* src/styles.css */
+
+/* Navbar styles */
+nav {
+  position: fixed;
+  top: 0;
+  height: 100%;
+
+  right: 0;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 22px 52px rgb(214, 19, 19);
+  z-index: 10;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+li a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+li a:hover {
+  color: #0070f3;
+}
+
+/* App styles */
+main {
+  margin-top: 60px; /* Adjust for fixed navbar */
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.section:hover {
+  transform: scale(1.05); /* Zoom effect */
+}
+
+section {
+  padding: 20px;
+}

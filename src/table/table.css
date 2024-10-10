@@ -1,0 +1,21 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(8, 50px); /* 8 columns of 50px each */
+  grid-template-rows: repeat(8, 50px); /* 8 rows of 50px each */
+  gap: 5px; /* Space between boxes */
+
+  justify-content: center;
+  padding-top: 150px;
+}
+
+.box {
+  width: 50px; /* Width of each box */
+  height: 50px; /* Height of each box */
+  background-color: lightgray; /* Default background color */
+  border: 1px solid #ccc; /* Border for each box */
+  transition: background-color 0.3s ease; /* Smooth transition for color change */
+}
+
+.box.filled {
+  background-color: blue; /* Background color when filled */
+}
