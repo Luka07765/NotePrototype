@@ -1,19 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import plusIcon from './../assets/plus.png';
 import deleteIcon from './../assets/delete.svg';
 import './../Logic/Main.css';
 import { v4 as uuidv4 } from 'uuid';
 import Footer from './Footer';
+import 'prismjs/themes/prism-tomorrow.css';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-javascript';
 
 const Main = ({ activeNote, onUpdateNote }) => {
-  let VisualNotes = 1;
-  const AddTitle = 1;
-  const AddSubTitle = 1;
-  const AddListNumbers = 1; //ili nesto drugo
-  const AddCodeSniptes = 1;
-  const AddIconsDecoration = 1;
-  const AddTupesBox = 1;
-
   const handleEditField = (field, value) => {
     const updatedNote = { ...activeNote, [field]: value };
     onUpdateNote(updatedNote);
@@ -26,6 +21,14 @@ const Main = ({ activeNote, onUpdateNote }) => {
     };
     onUpdateNote(updatedNote);
   };
+  const code = `
+    // Example JavaScript code
+    function greet(name) {
+      console.log('Hello ' + name + '!');
+    }
+
+    greet('World'); // Call the function
+  `;
 
   const handleDeleteItem = (id) => {
     const updatedItems = activeNote.items.filter((item) => item.id !== id);
@@ -40,6 +43,9 @@ const Main = ({ activeNote, onUpdateNote }) => {
     const updatedNote = { ...activeNote, items: updatedItems };
     onUpdateNote(updatedNote);
   };
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
 
   if (!activeNote) {
     return (
@@ -61,11 +67,10 @@ const Main = ({ activeNote, onUpdateNote }) => {
           onChange={(e) => handleEditField('title', e.target.value)}
           autoFocus
         />
-
+        ;
         <div className="sidebar">
           <img src={plusIcon} alt="Add" onClick={handleAddItem} />
         </div>
-
         <div className="notesc">
           <ul>
             {(activeNote.items || []).map((item) => (
@@ -90,6 +95,15 @@ const Main = ({ activeNote, onUpdateNote }) => {
           </ul>
         </div>
       </div>
+      <pre
+        style={{
+          backgroundColor: '#1e1e1e',
+          padding: '20px',
+          borderRadius: '5px',
+        }}
+      >
+        <code className="language-javascript">{code}</code>
+      </pre>
       <Footer />
     </div>
   );

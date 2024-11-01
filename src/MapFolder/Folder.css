@@ -1,35 +1,96 @@
-.sidebar {
-  width: 300px;
-  border-right: 1px solid #ccc;
+/* Sidebar styles */
+.app-sidebar {
+  width: 250px;
   padding: 10px;
+  background-color: #f4f4f4;
+}
+
+.app-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.app-sidebar-header h3 {
+  margin: 0;
+}
+
+.app-sidebar-header-folder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.plusimg {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.folder {
+  margin-bottom: 10px;
 }
 
 .folder-name {
-  cursor: pointer;
   font-weight: bold;
-  margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .folder-contents {
-  margin-left: 20px;
+  padding-left: 15px;
 }
 
 .file {
-  cursor: pointer;
-  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
 }
 
-button {
-  margin-top: 5px;
-  display: block;
-  background-color: #007bff;
+.file.active {
+  background-color: #e0e0e0;
+}
+
+.file span {
+  flex-grow: 1;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-button img {
+  width: 16px;
+  height: 16px;
+}
+
+.folder-actions {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.add-note,
+.add-folder {
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-  margin-right: 5px;
+  font-size: 12px;
 }
 
-button:hover {
-  background-color: #0056b3;
+.add-note:hover,
+.add-folder:hover {
+  background-color: #45a049;
+}
+
+.delimg {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
 }

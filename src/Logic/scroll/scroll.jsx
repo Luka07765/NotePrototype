@@ -2,27 +2,19 @@
 
 import React from 'react';
 import { Link } from 'react-scroll';
-import './scroll.css'; // Import the CSS file
+import './scroll.css';
 
-const Navbar = () => {
+const Navbar = ({ sections }) => {
   return (
     <nav>
       <ul>
-        <li>
-          <Link to="section1" smooth={true} duration={700}>
-            Section 1
-          </Link>
-        </li>
-        <li>
-          <Link to="section2" smooth={true} duration={700}>
-            Section 2
-          </Link>
-        </li>
-        <li>
-          <Link to="section3" smooth={true} duration={700}>
-            Section 3
-          </Link>
-        </li>
+        {sections.map((section) => (
+          <li key={section.id}>
+            <Link to={section.id} smooth={true} duration={700}>
+              {section.title}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

@@ -13,10 +13,13 @@
     "graphology-layout": "^0.6.1",
     "graphology-layout-force": "^0.2.4",
     "graphology-layout-forceatlas2": "^0.10.1",
+    "prismjs": "^1.29.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-flow-renderer": "^10.3.17",
+    "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
+    "react-scroll": "^1.9.0",
     "sigma": "^3.0.0-beta.30",
     "uuid": "^10.0.0",
     "web-vitals": "^2.1.4"

@@ -1,11 +1,8 @@
-/* src/styles.css */
-
 /* Navbar styles */
 nav {
   position: fixed;
   top: 0;
   height: 100%;
-
   right: 0;
   background-color: white;
   padding: 10px;
@@ -15,8 +12,14 @@ nav {
 
 ul {
   list-style: none;
+  padding: 0;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column; /* Set the direction to column for vertical layout */
+  align-items: flex-start; /* Align items to the left side */
+}
+
+li {
+  margin-bottom: 15px; /* Add spacing between each list item */
 }
 
 li a {

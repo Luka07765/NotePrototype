@@ -1,40 +1,33 @@
 import React, { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 
-const ForceDirectedTree = () => {
+const ForceDirectedTree = ({ structure }) => {
   const chartRef = useRef();
 
   useEffect(() => {
     // Clear any previous chart before rendering the new one
     d3.select(chartRef.current).selectAll('*').remove();
 
-    // Sample data for testing
-    const data = {
-      name: 'Root',
-      children: [
-        {
-          name: 'Group 1',
-          children: [{ name: 'Subgroup 1.1' }, { name: 'Subgroup 1.2' }],
-        },
-        {
-          name: 'Group 2',
-          children: [{ name: 'Subgroup 2.1' }, { name: 'Subgroup 2.2' }],
-        },
-        {
-          name: 'Group 3',
-          children: [
-            {
-              name: 'Subgroup 3.1',
-              children: [
-                { name: 'Sub-subgroup 3.1.1' },
-                { name: 'Sub-subgroup 3.1.2' },
-              ],
-            },
-            { name: 'Subgroup 3.2' },
-          ],
-        },
-      ],
+    // Convert the structure into a hierarchical format for D3
+    const transformStructure = (folders) => {
+      return {
+        name: folders.name,
+        filesCount: folders.files.length,
+        subfoldersCount: folders.subfolders.length,
+        children: [
+          ...folders.files.map((file) => ({
+            name: file.name,
+            filesCount: 0,
+            subfoldersCount: 0,
+          })),
+          ...folders.subfolders.map((subfolder) =>
+            transformStructure(subfolder)
+          ),
+        ],
+      };
     };
+
+    const data = transformStructure(structure[0]);
 
     // Chart dimensions
     const width = 928;
@@ -76,7 +69,7 @@ const ForceDirectedTree = () => {
       .data(links)
       .join('line');
 
-    // Append nodes
+    // Append nodes with dynamic circle size based on folder structure
     const node = svg
       .append('g')
       .attr('fill', '#fff')
@@ -87,7 +80,9 @@ const ForceDirectedTree = () => {
       .join('circle')
       .attr('fill', (d) => (d.children ? '#555' : '#000'))
       .attr('stroke', (d) => (d.children ? '#555' : '#fff'))
-      .attr('r', 5)
+      .attr('r', (d) =>
+        Math.max(5, 5 + d.data.filesCount * 2 + d.data.subfoldersCount * 2)
+      ) // Change the multiplier for size as needed
       .call(drag(simulation));
 
     // Add tooltip to show node names
@@ -129,7 +124,7 @@ const ForceDirectedTree = () => {
         .on('drag', dragged)
         .on('end', dragended);
     }
-  }, []);
+  }, [structure]); // Re-run useEffect when the structure changes
 
   return (
     <div>

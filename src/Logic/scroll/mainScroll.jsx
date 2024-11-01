@@ -22,6 +22,10 @@ const App = () => {
           <h2>Section 3</h2>
           <p>Content for Section 3</p>
         </Element>
+        <Element name="section4" className="section">
+          <h2>Section 4</h2>
+          <p>Content for Section 4</p>
+        </Element>
       </main>
     </div>
   );

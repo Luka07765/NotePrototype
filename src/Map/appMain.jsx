@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import Folder from './MapFolder/Folder'; // Your existing folder component
-// import GraphView from './MapFolder/Flow'; // Import the GraphView component
+import Folder from './Folder/Folder';
+import GraphView from './Map/TreeMap';
 import { v4 as uuid } from 'uuid';
-// import SunburstChart from './d3';
-// import Tree from './MapFolder/tree';
+
 function App() {
   const [structure, setStructure] = useState([
     {
@@ -16,10 +15,8 @@ function App() {
 
   const onSelectFile = (file) => {
     console.log('Selected file:', file);
-    // Open and display the file's contents in the main view
   };
 
-  // Recursive function to add a file to the right folder
   const addFileToFolder = (folders, folderId, newFile) => {
     return folders.map((folder) => {
       if (folder.id === folderId) {
@@ -37,7 +34,6 @@ function App() {
     });
   };
 
-  // Recursive function to add a folder to the right folder
   const addFolderToFolder = (folders, folderId, newFolder) => {
     return folders.map((folder) => {
       if (folder.id === folderId) {
@@ -76,18 +72,15 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Tree /> */}
-      {/* <SunburstChart /> */}
       <Folder
         structure={structure}
         onSelectFile={onSelectFile}
         onAddFile={onAddFile}
         onAddFolder={onAddFolder}
       />
-      <div className="main-content">
-        {/* This is where you will show the content of the selected file */}
-      </div>
-      {/* <GraphView structure={structure} /> */}
+      <div className="main-content"></div>
+      {/* Pass the structure to the GraphView */}
+      <GraphView structure={structure} />
     </div>
   );
 }

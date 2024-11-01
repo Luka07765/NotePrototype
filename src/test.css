@@ -1,10 +1,53 @@
-.line-container {
-  margin: 20px;
-  text-align: center;
+.nesto {
+  padding-left: 140px;
 }
 
-.dotted-glow-line {
-  border-top: 1px dotted #888;
-  width: 80%;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+.row {
+  padding: 10px 20px; /* More balanced padding for width and height */
+  border-radius: 5px; /* Simplified to add curvature */
+  height: 40px; /* Increased for better visibility */
+  width: 150px; /* Adjusted for better proportions */
+  background-color: rgba(
+    255,
+    123,
+    123,
+    0.7
+  ); /* Increased opacity for better contrast */
+  border: 2px solid black; /* Added a solid black border */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Added subtle shadow for depth */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition on hover */
+}
+
+.row:hover {
+  background-color: rgba(255, 100, 100, 0.8); /* Darker color on hover */
+  transform: scale(1.05); /* Slightly increases size on hover */
+}
+
+.column {
+  padding-left: 140px;
+  width: 150px; /* Adjusted width for better visibility */
+  height: 40px; /* Increased height for better proportion */
+  background-color: rgba(
+    60,
+    255,
+    0,
+    0.7
+  ); /* Made opacity consistent with .row */
+  border-radius: 3px; /* Rounded corners */
+  border: 2px solid green; /* Added a solid green border */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Added a shadow for a 3D effect */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover transition */
+}
+
+.column:hover {
+  background-color: rgba(60, 200, 0, 0.9); /* Darker green on hover */
+  transform: scale(1.05); /* Slight size increase on hover */
+}
+
+.ADD {
+  height: 100px;
+  width: 100px;
+  background-color: purple;
+  border-radius: 19px;
+  cursor: pointer;
 }
